@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context="kr.hs.e_mirim.lia318.spatial_confusion.MainActivity">
+
+    <ImageView
+        android:id="@+id/appicon"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/appicon" />
+
+    <ImageView
+        android:id="@+id/applogo"
+        android:layout_width="260dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="0dp"
+        android:src="@drawable/applogo" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2"
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+        <ImageView
+            android:id="@+id/play_button"
+            android:layout_marginTop="80dp"
+            android:layout_width="180dp"
+            android:layout_height="80dp"
+            android:onClick="onClick"
+            android:src="@drawable/game_play_button" />
+
+        <ImageView
+            android:id="@+id/explain_button"
+            android:layout_width="180dp"
+            android:layout_height="80dp"
+            android:onClick="onClick"
+            android:src="@drawable/game_explain_button" />
+
+    </LinearLayout>
+
+</LinearLayout>
