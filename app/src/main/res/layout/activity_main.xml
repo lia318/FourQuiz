@@ -29,7 +29,6 @@
         android:gravity="center"
         android:orientation="vertical">
 
-
         <ImageView
             android:id="@+id/play_button"
             android:layout_marginTop="80dp"

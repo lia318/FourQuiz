@@ -13,6 +13,7 @@
         android:layout_height="50dp"
         android:layout_marginLeft="300dp"
         android:id="@+id/environment_setting"
+        android:onClick="onClick"
         android:src="@drawable/environment_setting"/>
     <ImageView
         android:layout_width="150dp"
@@ -21,6 +22,7 @@
         android:layout_marginLeft="300dp"
         android:id="@+id/key"
         android:layout_weight="1"
+        android:onClick="onClick"
         android:src="@drawable/key"
         />
 
@@ -115,7 +117,7 @@
             android:layout_height="75dp"
             android:layout_weight="0.6"
             android:layout_marginTop="230dp"
-            />
+            />d
     </LinearLayout>
     <LinearLayout
         android:layout_width="fill_parent"
