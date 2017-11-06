@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     Button.OnClickListener ClickListener=new View.OnClickListener(){
         @Override
-        public void onClick(View view) {
+        public void onClick(View view) { // 시작 버튼 클릭 시 액비티비 전환
             switch (view.getId()) {
                 case R.id.play_button :
                     startActivity(new Intent(MainActivity.this, main_game_strat.class));
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     };
 
-    public void onBackPressed() {
+    public void onBackPressed() { // 뒤로가기 표시
         if ( pressedTime == 0 ) {
             Toast.makeText(MainActivity.this, "한 번 더 누르면 종료됩니다." , Toast.LENGTH_SHORT).show();
             pressedTime = System.currentTimeMillis();
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    public void onClick(View v) {
+    public void onClick(View v) { // 게임방법 다이얼로그
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         dialog.setIcon(R.drawable.appicon);
         dialog.setTitle("게임방법");
@@ -72,5 +72,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         dialog.setPositiveButton("알았어~", null); // null => 이벤트 발생x
         dialog.show(); // 꼭 설정하기
-    }
+    } // onClick
 }
+
+/*
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/lia318/Spatial_Confusion.git
+git push -u origin master
+ */
