@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         public void onClick(View view) { // 시작 버튼 클릭 시 액비티비 전환
             switch (view.getId()) {
                 case R.id.play_button :
-                    startActivity(new Intent(MainActivity.this, main_game_strat.class));
+                    startActivity(new Intent(MainActivity.this, main_game_start.class));
                     finish();
                     break;
             }

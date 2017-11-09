@@ -16,7 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".main_game_strat"></activity>
+        <activity android:name=".main_game_start"></activity>
 
     </application>
 

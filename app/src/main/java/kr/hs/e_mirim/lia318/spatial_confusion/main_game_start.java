@@ -1,13 +1,19 @@
 package kr.hs.e_mirim.lia318.spatial_confusion;
 
+/**
+ * Created by Admin on 2017-11-08.
+ */
+
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,13 +27,16 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Random;
 
+
+
 /**
  * Created by sojun on 2017-11-03.
  *
  *
  */
 
-public class main_game_strat extends AppCompatActivity implements View.OnClickListener {
+public class main_game_start extends MainActivity implements View.OnClickListener {
+
     int answer;
     ImageView pass;
     ImageView environment_setting;
@@ -41,7 +50,7 @@ public class main_game_strat extends AppCompatActivity implements View.OnClickLi
             "카페라떼,자연재해,대형마트,샌드위치,비눗방울," +
             "겨드랑이,모나리자,와이파이,연지곤지,바리스타," +
             "파인애플,마요네즈,자일리톨,우측통행,박학다식," +
-            "금의환햔,시시비비,십시일반,인과응보,프로그램," +
+            "금의환향,시시비비,십시일반,인과응보,프로그램," +
             "현모양처,시나리오,치아교정,오피스텔,국민연금," +
             "귀차니즘,기억상실,깐따삐아,다이어리,닭가슴살," +
             "데스노트,도라에몽,만리장성,무한도전,물레방아," +
@@ -50,16 +59,22 @@ public class main_game_strat extends AppCompatActivity implements View.OnClickLi
             "추석연휴,캐리커쳐,코카콜라,크리스탈,바보온달," +
             "피노키오,필기도구";
     long pressedTime=0;
-    String [] c=new String[word.length()-1];
+    String [] c=new String[71];
     String[] data=word.split(",");
     Random random=new Random();
     int rIndex=random.nextInt(c.length);
 
-    //이거 파일처리 하다가 8일아침까지 하긴 힘들거같아서 일단 임시방편으로 조금만 저장 해뒀어.파일처리 할게ㅜㅜ
+    TextView textView1,textView2;
+
     //String b[];
+    EditText e;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.game_strat);
+        setContentView(R.layout.game_start);
+
+        textView1=(TextView)findViewById(R.id.textView);
+        textView2=(TextView)findViewById(R.id.textView2);
+        e=(EditText)findViewById(R.id.edit_1);
         findViewById(R.id.answer).setOnClickListener(ClickListener);
         findViewById(R.id.pass).setOnClickListener(ClickListener);
         findViewById(R.id.environment_setting).setOnClickListener(this);
@@ -67,27 +82,27 @@ public class main_game_strat extends AppCompatActivity implements View.OnClickLi
         findViewById(R.id.textView);
         findViewById(R.id.textView2);
 
-        TextView textView1=(TextView)findViewById(R.id.textView);
-        TextView textView2=(TextView)findViewById(R.id.textView2);
+
 
         TextView textView3=(TextView)findViewById(R.id.textView3);
         TextView textView4=(TextView)findViewById(R.id.textView4);
+
         textView3.setVisibility(View.GONE);
         textView4.setVisibility(View.GONE);
         imageOo = (ImageView)findViewById(R.id.imageOo);
         imageXx = (ImageView)findViewById(R.id.imageXx);
 
         int count=word.length();
-        //이 부분을 배열 갯수에 따라서 a.length()랑 -1도 해봤는데, ArrayIndexOutOfBounds가 뜨더라....
 
-        String [] c=new String[71];//상수 값을 count-1로 해봤는데 자꾸 -1을 붙여도 ArrayIndexOutOf떠서 일단 상수로 해뒀어
+
+        String [] c=new String[71];
         String[] data;
 
         data=word.split(",");
 
-        for(int i=0;i<71;i++){//상수 값을 count-1로 해봤는데 자꾸 -1을 붙여도 ArrayIndexOutOf떠서 일단 상수로 해뒀어
-            c[i]=data[i].substring(0,2);
-        }
+        for(int i=0;i<71;i++){
+            c[i]=data[i].substring(0,2); }
+
         Random random=new Random();
         int rIndex=random.nextInt(c.length);
 
@@ -97,42 +112,51 @@ public class main_game_strat extends AppCompatActivity implements View.OnClickLi
 
     } // onCreate
 
+    /*정답이라는 버튼을 눌렀을 때 사용자가 입력한 값+내가 띄운값이 4글자와 동일한지 비교한다.
+    틀렸다면 X를 띄우고 다시 똑같은 문제를 맞히는 화면으로 바뀐다. 맞았다면 O을 띄우고 새 랜덤값이 띄워진다.*/
     Button.OnClickListener ClickListener=new View.OnClickListener(){
         @Override
         public void onClick(View view) {
-                switch (view.getId()) {
-                    case R.id.answer:
-                        //사용자가 입력한 값+화면글자네글자와 맞는지 비교
-                        /*if(data.equals(c[0]+data[rIndex].substring(1,2)+data[rIndex].substring(2,3)+data[rIndex].substring(3,4))) {
-                            Drawable drawable = getResources().getDrawable(
-                                    R.drawable.o_but);
+            switch (view.getId()) {
+                case R.id.answer:
+                    //내가 보여준거+사용자가 입력하는 공간의 id.getText/
+                    String an=c[0]+data[rIndex].substring(1,2)+e.getText().toString();
+                    Log.d("@@@@@@@@:",an);
 
-                            // XML 에 있는 ImageView 위젯에 이미지 셋팅
-                            ImageView imageView = (ImageView) findViewById(R.id.relativeLayout);
-                            imageView.setImageDrawable(drawable);
-                        }*/
-                        //else { // 정답일 땐 oo를 VISIBLE, 오답일 땐 xx를 VISIBLE
-                                new Handler().postDelayed(new Runnable() {
-                                public void run() {
-                                    imageOo.setVisibility(View.INVISIBLE);
-                                    // 다음 문제로 넘어가게...
-                                }
-                            }, 3000);
-                            startActivity(new Intent(main_game_strat.this, main_game_strat.class));
-                            finish();
-                            break;
-                       // }
+
+                    if(data.equals(an)) {// 정답일 땐 oo를 VISIBLE,
+                        imageOo.setVisibility(View.VISIBLE);
+                    }
+
+                    else { // 오답일 땐 xx를 VISIBLE
+                        new Handler().postDelayed(new Runnable() {
+                            public void run() {
+                                // imageOo.setVisibility(View.INVISIBLE);
+                                //Drawable drawable = getResources().getDrawable(R.drawable.x_but);
+
+                                // XML 에 있는 ImageView 위젯에 이미지 셋팅
+                                //ImageView imageView = (ImageView) findViewById(R.id.relativeLayout);
+                                // imageView.setImageDrawable(drawable);
+                                imageXx.setVisibility(View.VISIBLE);
+
+                                // //  틀린 문제 다시 보이게...
+                                textView1.setText(c[rIndex]);
+                                textView2.setText(data[rIndex].substring(1,2));
+                            }
+                        }, 3000);
+                        startActivity(new Intent(main_game_start.this, main_game_start.class));
+                        finish();
+
+
+
+
+                        break;
+                    }
 
 
                 case R.id.pass :
-                    startActivity(new Intent(main_game_strat.this, main_game_strat.class));
-                    // drawable 리소스 객체 가져오기
-                    Drawable drawable = getResources().getDrawable(
-                            R.drawable.x_but);
-
-                    // XML 에 있는 ImageView 위젯에 이미지 셋팅
-                    ImageView imageView = (ImageView) findViewById(R.id.relativeLayout);
-                    imageView.setImageDrawable(drawable);
+                    startActivity(new Intent(main_game_start.this, main_game_start.class));
+                    imageOo.setVisibility(View.INVISIBLE);
 
                     finish();
                     break;
@@ -140,16 +164,17 @@ public class main_game_strat extends AppCompatActivity implements View.OnClickLi
         }
     };
 
+
     public void onBackPressed() { // 뒤로가기 표시
         if ( pressedTime == 0 ) {
-            Toast.makeText(main_game_strat.this, "한 번 더 누르면 종료됩니다." , Toast.LENGTH_SHORT).show();
+            Toast.makeText(main_game_start.this, "한 번 더 누르면 종료됩니다." , Toast.LENGTH_SHORT).show();
             pressedTime = System.currentTimeMillis();
         }
         else {
             int seconds = (int) (System.currentTimeMillis() - pressedTime);
 
             if ( seconds > 2000 ) {
-                Toast.makeText(main_game_strat.this, "한 번 더 누르면 종료됩니다." , Toast.LENGTH_SHORT).show();
+                Toast.makeText(main_game_start.this, "한 번 더 누르면 종료됩니다." , Toast.LENGTH_SHORT).show();
                 pressedTime = 0 ;
             }
             else {

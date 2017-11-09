@@ -1,12 +1,10 @@
 package kr.hs.e_mirim.lia318.spatial_confusion;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 
 /**
  * Created by sojun on 2017-11-04.
@@ -18,7 +16,7 @@ public class game_button extends AppCompatActivity implements View.OnClickListen
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.game_strat);
+        setContentView(R.layout.game_start);
 
         findViewById(R.id.but1).setOnClickListener(this);
         findViewById(R.id.but2).setOnClickListener(this);
