@@ -5,6 +5,7 @@ package kr.hs.e_mirim.lia318.spatial_confusion;
  */
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -108,6 +109,9 @@ public class main_game_start extends MainActivity implements View.OnClickListene
 
         textView1.setText(c[rIndex]);
         textView2.setText(data[rIndex].substring(1,2));
+        textView1.setTextColor(Color.parseColor("#ffffff"));
+        textView2.setTextColor(Color.parseColor("#ffffff"));
+
 
 
     } // onCreate
@@ -142,18 +146,14 @@ public class main_game_start extends MainActivity implements View.OnClickListene
                                 // //  틀린 문제 다시 보이게...
                                 textView1.setText(c[rIndex]);
                                 textView2.setText(data[rIndex].substring(1,2));
+                                textView1.setTextColor(Color.parseColor("#ffffff"));
+                                textView2.setTextColor(Color.parseColor("#ffffff"));
                             }
                         }, 3000);
                         startActivity(new Intent(main_game_start.this, main_game_start.class));
                         finish();
-
-
-
-
                         break;
                     }
-
-
                 case R.id.pass :
                     startActivity(new Intent(main_game_start.this, main_game_start.class));
                     imageOo.setVisibility(View.INVISIBLE);
@@ -167,21 +167,24 @@ public class main_game_start extends MainActivity implements View.OnClickListene
 
     public void onBackPressed() { // 뒤로가기 표시
         if ( pressedTime == 0 ) {
-            Toast.makeText(main_game_start.this, "한 번 더 누르면 종료됩니다." , Toast.LENGTH_SHORT).show();
-            pressedTime = System.currentTimeMillis();
+            /*Toast.makeText(main_game_start.this, "한 번 더 누르면 종료됩니다." , Toast.LENGTH_SHORT).show();
+            pressedTime = System.currentTimeMillis();*/
+            startActivity(new Intent(main_game_start.this, MainActivity.class));
+            finish();
         }
         else {
             int seconds = (int) (System.currentTimeMillis() - pressedTime);
 
             if ( seconds > 2000 ) {
-                Toast.makeText(main_game_start.this, "한 번 더 누르면 종료됩니다." , Toast.LENGTH_SHORT).show();
+                /*Toast.makeText(main_game_start.this, "한 번 더 누르면 종료됩니다." , Toast.LENGTH_SHORT).show();*/
+                startActivity(new Intent(main_game_start.this, MainActivity.class));
+                finish();
                 pressedTime = 0 ;
             }
             else {
                 super.onBackPressed();
             }
         }
-
     }
 
     @Override
