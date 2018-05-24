@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/pop"
+    android:background="@drawable/setting"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp">
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/appicon" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_toEndOf="@+id/icon"
+        android:gravity="center_vertical|center_horizontal"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textSize="30sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/content"
+        android:layout_below="@+id/icon"
+        android:layout_marginTop="41dp"
+        android:layout_above="@+id/ok"
+        android:gravity="center_vertical|center_horizontal"
+        android:textAlignment="center"
+        android:textSize="23sp" />
+
+    <Button
+        android:layout_width="95dp"
+        android:layout_height="50dp"
+        android:id="@+id/ok"
+        android:onClick="onclick"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

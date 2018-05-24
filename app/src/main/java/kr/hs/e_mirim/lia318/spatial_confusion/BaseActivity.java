@@ -6,9 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-/**
- * Created by sojun on 2017-11-09.
- */
+
+
 
 public class BaseActivity extends Activity {
 
@@ -17,8 +16,10 @@ public class BaseActivity extends Activity {
     @Override
     public void setContentView(int layoutResID) {
         super.setContentView(layoutResID);
+        setContentView(R.layout.game_start);
+
         if (typeface == null) {
-            typeface = Typeface.createFromAsset(this.getAssets(), "NanumSquareL.otf");
+            typeface = Typeface.createFromAsset(this.getAssets(), "NanumBarunpenB.ttf");
         }
         setGlobalFont(getWindow().getDecorView());
     }
